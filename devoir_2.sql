@@ -19,4 +19,9 @@ SELECT title, price
 FROM titles
 WHERE title_id LIKE 'SU%' OR title_id LIKE 'BU%';
 
+-- question 4
+
+SELECT title, price
+FROM titles
+WHERE title_id NOT LIKE 'SU%' AND title_id NOT LIKE 'BU%';
 
