@@ -38,5 +38,12 @@ SELECT title, price
 FROM titles
 WHERE title NOT RLIKE '^[SB]' 
     AND title LIKE '__f%';
+    
+-- question 7
+
+SELECT title, price
+FROM titles
+WHERE title RLIKE '^[A-J]';
+
 
 
