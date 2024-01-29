@@ -32,4 +32,11 @@ FROM titles
 WHERE title NOT RLIKE '^[SB]' 
     AND title LIKE '_o%';
 
+-- question 6
+
+SELECT title, price
+FROM titles
+WHERE title NOT RLIKE '^[SB]' 
+    AND title LIKE '__f%';
+
 
