@@ -1,6 +1,7 @@
 /*1 -La liste des paires (auteur, éditeur) demeurant dans la même ville.*/
+USE library ; 
 
-SELECT au_fname AS auteur ,pub_name AS éditeur , authors.city as ville
+SELECT au_fname  AS auteur ,pub_name AS editeur , authors.city as ville
 FROM authors 
 JOIN publishers ON authors.city=publishers.city ;
 
@@ -22,22 +23,25 @@ RIGHT JOIN publishers ON authors.city = publishers.city;
 /*4 - La liste des paires (auteur, éditeur) demeurant dans la même ville, incluant les
 auteurs et les éditeurs qui ne répondent pas à ce critère. */
 
-SELECT   au_fname, pub_name
+SELECT   au_fname, pub_name 
 FROM authors
 left JOIN publishers ON authors.city = publishers.city 
-union
+UNION
 SELECT   au_fname, pub_name
 FROM authors
 right JOIN publishers ON authors.city = publishers.city ;
 
-
-
+ 
 
 /*5 - Effectif des employes par niveau d'experience*/
 
 SELECT hire_date AS date_Embauche, COUNT(*) AS effectif
 FROM employees
 GROUP BY hire_date ORDER BY hire_date ;
+
+
+SELECT job_lvl , COUNT(emp_id) AS effectif 
+FROM employees GROUP BY job_lvl ;
 
 /*6 - Liste des employes par maison d'edition*/
 
@@ -48,8 +52,7 @@ ORDER BY publishers.pub_name  ;
 
 /* 7 - Salaires horaires moyens des employes par maison d'edition */ 
 
-SELECT publishers.pub_name AS Maison_Edition ,
-AVG (employees.salary) AS Salaire_Moyen 
+SELECT publishers.pub_name AS Maison_Edition , AVG (employees.salary) AS Salaire_Moyen 
 FROM  employees 
 JOIN publishers ON  employees.pub_id = publishers.pub_id 
 GROUP BY publishers.pub_id ;
