@@ -1,8 +1,8 @@
 /*============ Creation d'une DATABASE library2 ==================*/
 /*================================================================*/
-
+DROP DATABASE IF EXISTS library2;
 CREATE DATABASE library2 ; 
-DROP DATABASE IF EXISTS library;
+
 
 USE library2 ;
 
@@ -112,10 +112,12 @@ DROP TABLE IF EXISTS Sales ;
 
 CREATE TABLE Sales (
 store_id  TINYINT NOT NULL REFERENCES Stores(store_id) ,
-ord_num TINYINT NOT NULL NOT NULL PRIMARY KEY ,
+ord_num TINYINT NOT NULL  ,
 title_id TINYINT NOT NULL REFERENCES Titles(title_id) ,
 ord_date DATETIME ,
-qty INT 
+qty INT ,
+primary key (store_id , ord_num , title_id)  
+
 );
 
 /*============creation de la table Redactions ==================*/
@@ -126,7 +128,8 @@ CREATE TABLE Redactions (
 au_id TINYINT NOT NULL REFERENCES Authors(au_id) ,
 title_id TINYINT NOT NULL REFERENCES Titles(title_id) ,
 au_ord TINYINT ,
-royalty FLOAT 
+royalty FLOAT ,
+primary key (au_id, title_id) /*  deux clés etrangere presente un clé primaire */
 );
 
 
